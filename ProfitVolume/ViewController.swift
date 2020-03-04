@@ -1,13 +1,13 @@
 import Cocoa
 
 class ViewController: NSViewController, NSTextFieldDelegate {
-    @IBOutlet var risk: NSTextField!
-    @IBOutlet var profitX: NSTextField!
-    @IBOutlet var enter: NSTextField!
-    @IBOutlet var stopLoss: NSTextField!
-    @IBOutlet var takeProfit: NSTextField!
-    @IBOutlet var sharesToBuy: NSTextField!
- 
+    @IBOutlet var riskInput: NSTextField!
+    @IBOutlet var profitXInput: NSTextField!
+    @IBOutlet var enterInput: NSTextField!
+    @IBOutlet var stopLossInput: NSTextField!
+    @IBOutlet var takeProfitInput: NSTextField!
+    @IBOutlet var sharesToBuyInput: NSTextField!
+
     enum TradeType: Int {
         case short, long
     }
@@ -20,23 +20,28 @@ class ViewController: NSViewController, NSTextFieldDelegate {
     func controlTextDidChange(_ obj: Notification) {
         typeChanged(self)
     }
+    
+    @IBAction func quitWindowButtonTapped(button: NSButton) {
+        exit(0)
+    }
 
     func typeChanged(_ sender: Any) {
-        if !risk.stringValue.isEmpty && !profitX.stringValue.isEmpty && !enter.stringValue.isEmpty && !stopLoss.stringValue.isEmpty {
+        if !riskInput.stringValue.isEmpty && !profitXInput.stringValue.isEmpty &&
+            !enterInput.stringValue.isEmpty && !stopLossInput.stringValue.isEmpty {
             
-            let takeProfitValue, sharesToBuyValue: Float
-            let tradeType = getTradeType(enter: enter.floatValue, stopLoss: stopLoss.floatValue)
+            let takeProfit, sharesToBuy: Float
+            let tradeType = getTradeType(enter: enterInput.floatValue, stopLoss: stopLossInput.floatValue)
             
             if tradeType == TradeType.short {
-                sharesToBuyValue = risk.floatValue / (enter.floatValue - stopLoss.floatValue)
-                takeProfitValue = enter.floatValue + ((enter.floatValue - stopLoss.floatValue) * profitX.floatValue)
+                sharesToBuy = riskInput.floatValue / (enterInput.floatValue - stopLossInput.floatValue)
+                takeProfit = enterInput.floatValue + ((enterInput.floatValue - stopLossInput.floatValue) * profitXInput.floatValue)
             } else {
-                sharesToBuyValue = risk.floatValue / (stopLoss.floatValue - enter.floatValue)
-                takeProfitValue = enter.floatValue - ((stopLoss.floatValue - enter.floatValue) * profitX.floatValue)
+                sharesToBuy = riskInput.floatValue / (stopLossInput.floatValue - enterInput.floatValue)
+                takeProfit = enterInput.floatValue - ((stopLossInput.floatValue - enterInput.floatValue) * profitXInput.floatValue)
             }
-            if isNotInfiniteOrNan(a: sharesToBuyValue) && isNotInfiniteOrNan(a: takeProfitValue) {
-                sharesToBuy.intValue = Int32(sharesToBuyValue)
-                takeProfit.stringValue = String(format: "%.2f", takeProfitValue)
+            if isNotInfiniteOrNan(a: sharesToBuy) && isNotInfiniteOrNan(a: takeProfit) {
+                sharesToBuyInput.intValue = Int32(sharesToBuy)
+                takeProfitInput.stringValue = String(format: "%.2f", takeProfit)
             }
         }
         

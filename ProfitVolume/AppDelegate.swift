@@ -3,7 +3,7 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
-
+    let popoverView = NSPopover()
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         statusItem.button?.title = "⇅"
@@ -25,7 +25,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             fatalError("Couldn't find status item button.")
         }
 
-        let popoverView = NSPopover()
         popoverView.contentViewController = vc
         popoverView.behavior = .semitransient
         popoverView.show(relativeTo: button.bounds, of: button, preferredEdge: .maxY)

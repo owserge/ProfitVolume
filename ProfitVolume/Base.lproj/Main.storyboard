@@ -687,7 +687,7 @@
             <objects>
                 <viewController storyboardIdentifier="ViewController" id="XfG-lQ-9wD" customClass="ViewController" customModule="ProfitVolume" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="572" height="97"/>
+                        <rect key="frame" x="0.0" y="0.0" width="620" height="97"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="26C-QX-NdS">
@@ -708,7 +708,7 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                                 <connections>
-                                    <outlet property="delegate" destination="XfG-lQ-9wD" id="HpE-nZ-qir"/>
+                                    <outlet property="delegate" destination="XfG-lQ-9wD" id="OPe-Wp-bqT"/>
                                 </connections>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lNt-C2-0Tl">
@@ -816,20 +816,31 @@
                                     <outlet property="delegate" destination="XfG-lQ-9wD" id="FhJ-mS-aKp"/>
                                 </connections>
                             </textField>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CcU-Ut-cji">
+                                <rect key="frame" x="559" y="16" width="54" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Quit" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8up-cv-0qh">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="quitWindowButtonTappedWithButton:" target="rPt-NT-nkU" id="12n-QC-MM2"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
                     <connections>
-                        <outlet property="enter" destination="Egj-Rg-Yhc" id="hvx-rR-ViS"/>
-                        <outlet property="profitX" destination="dHO-VU-gsG" id="Psp-Vr-BFE"/>
-                        <outlet property="risk" destination="771-a7-maq" id="SDt-sV-Eh0"/>
-                        <outlet property="sharesToBuy" destination="gkL-Bd-O4P" id="3Nc-TZ-7Yi"/>
-                        <outlet property="stopLoss" destination="9Kv-fi-kib" id="gJc-6c-KQe"/>
-                        <outlet property="takeProfit" destination="2dZ-RY-u5a" id="X0T-Tg-V3z"/>
+                        <outlet property="enterInput" destination="Egj-Rg-Yhc" id="I9y-MJ-BJy"/>
+                        <outlet property="profitXInput" destination="dHO-VU-gsG" id="tU7-4n-qkv"/>
+                        <outlet property="riskInput" destination="771-a7-maq" id="1gR-9V-Mh7"/>
+                        <outlet property="sharesToBuyInput" destination="gkL-Bd-O4P" id="jsE-QO-o3H"/>
+                        <outlet property="stopLossInput" destination="9Kv-fi-kib" id="EGa-jc-AzF"/>
+                        <outlet property="takeProfitInput" destination="2dZ-RY-u5a" id="T1q-cP-bU5"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="120" y="295.5"/>
+            <point key="canvasLocation" x="144" y="295.5"/>
         </scene>
     </scenes>
 </document>
